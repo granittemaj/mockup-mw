@@ -1,0 +1,66 @@
+/* Mark Wexler — shared behaviour */
+(function () {
+  // Sticky header background on scroll
+  var hdr = document.getElementById('hdr');
+  if (hdr && !hdr.classList.contains('solid')) {
+    var onScroll = function () { hdr.classList.toggle('scrolled', window.scrollY > 60); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // Reveal on scroll
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    // Count-up stats
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        cio.unobserve(e.target);
+        var el = e.target,
+          to = +el.dataset.to,
+          pre = el.dataset.prefix || '',
+          suf = el.dataset.suffix || '',
+          s = null, dur = 1100;
+        var step = function (t) {
+          if (!s) s = t;
+          var p = Math.min((t - s) / dur, 1),
+            v = Math.round(p * to);
+          el.textContent = pre + v + suf;
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.stat .n[data-to]').forEach(function (el) { cio.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Contact form — inline confirmation instead of redirect (mockup)
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var ok = form.querySelector('.form-success');
+      form.querySelectorAll('input,select,textarea,button').forEach(function (f) {
+        if (!f.classList.contains('keep')) f.style.display = 'none';
+      });
+      form.querySelectorAll('.field,.form-note').forEach(function (f) { f.style.display = 'none'; });
+      if (ok) ok.classList.add('show');
+    });
+  }
+
+  // Email capture (Changemaker Chronicles) — mockup confirmation
+  document.querySelectorAll('.capture').forEach(function (cap) {
+    cap.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      cap.innerHTML = '<p style="font-family:var(--serif);font-style:italic;color:rgba(244,241,232,.86);font-size:1.05rem">Thank you — we’ll let you know when it launches.</p>';
+    });
+  });
+})();
