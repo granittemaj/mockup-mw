@@ -167,6 +167,7 @@ header.nav-open .navtoggle i::after{top:0;transform:rotate(-45deg)}
 @media(max-width:880px){.lede-grid{grid-template-columns:1fr;gap:30px}}
 .lede-grid .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--grey);position:sticky;top:100px;height:fit-content}
 .lede-grid .lab b{color:var(--ox);display:block;margin-bottom:6px}
+@media(max-width:880px){.lede-grid .lab{position:static;top:auto}}
 .lede-body p{font-family:var(--disp);font-weight:500;font-size:clamp(1.5rem,2.6vw,2.15rem);line-height:1.28;letter-spacing:-.015em;margin-bottom:26px}
 .lede-body p .ox{color:var(--ox)}
 .lede-body .small{font-family:var(--body);font-weight:400;font-size:1.1rem;line-height:1.55;color:var(--ink-2);letter-spacing:0}
