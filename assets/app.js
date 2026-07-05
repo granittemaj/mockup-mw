@@ -63,4 +63,24 @@
       cap.innerHTML = '<p style="font-family:var(--serif);font-style:italic;color:rgba(244,241,232,.86);font-size:1.05rem">Thank you, we’ll let you know when it launches.</p>';
     });
   });
+
+  // Changemaker Chronicles: click-to-play film poster (loads the embed on demand)
+  document.querySelectorAll('.chron-player').forEach(function (p) {
+    var play = function () {
+      var src = p.getAttribute('data-embed');
+      if (!src) return;
+      var f = document.createElement('iframe');
+      f.setAttribute('src', src);
+      f.setAttribute('title', 'Changemaker Chronicles teaser');
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('allowfullscreen', '');
+      p.innerHTML = '';
+      p.appendChild(f);
+      p.style.cursor = 'default';
+    };
+    p.addEventListener('click', play);
+    p.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+    });
+  });
 })();
