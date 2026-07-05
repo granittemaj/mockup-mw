@@ -88,8 +88,8 @@ header.nav-open .navtoggle i::after{top:0;transform:rotate(-45deg)}
 .cover-left{padding:54px 46px 46px;display:flex;flex-direction:column;justify-content:space-between;position:relative}
 .cover-title{font-family:var(--disp);font-weight:900;line-height:.84;letter-spacing:-.05em;font-size:clamp(3.4rem,12vw,9rem);text-transform:uppercase}
 .cover-title .ln{display:block;overflow:hidden}
-.cover-title .ln span{display:block;transform:translateY(105%);animation:rise 1s forwards cubic-bezier(.2,.8,.2,1)}
-.cover-title .ln:nth-child(2) span{animation-delay:.12s}
+.cover-title .ln>span{display:block;transform:translateY(105%);animation:rise 1s forwards cubic-bezier(.2,.8,.2,1)}
+.cover-title .ln:nth-child(2)>span{animation-delay:.12s}
 .cover-title .dot{color:var(--ox)}
 .cover-dek{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.4;max-width:30ch;margin-top:30px;color:var(--ink-2);opacity:0;animation:fade 1s .55s forwards}
 .cover-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-top:40px;opacity:0;animation:fade 1s .8s forwards}
@@ -462,6 +462,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   *{animation-duration:.001s!important;animation-delay:0s!important}
   .reveal{opacity:1;transform:none}
   .cover-photo img{clip-path:none}
-  .cover-title .ln span{transform:none}
+  .cover-title .ln>span{transform:none}
   .cover-dek,.cover-foot{opacity:1}
 }
