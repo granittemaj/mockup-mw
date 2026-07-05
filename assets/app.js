@@ -8,6 +8,21 @@
     onScroll();
   }
 
+  // Mobile hamburger menu
+  var navToggle = document.querySelector('.navtoggle');
+  if (hdr && navToggle) {
+    navToggle.addEventListener('click', function () {
+      var open = hdr.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    hdr.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        hdr.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
   // Reveal on scroll
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (es) {
@@ -75,15 +90,15 @@
     });
   }
 
-  // Changemaker Chronicles: click-to-play film poster (loads the embed on demand)
-  document.querySelectorAll('.chron-player').forEach(function (p) {
+  // Click-to-play video posters (Chronicles film poster + video-grid facades)
+  document.querySelectorAll('.chron-player, .vfacade').forEach(function (p) {
     var play = function () {
       var src = p.getAttribute('data-embed');
       if (!src) return;
       var f = document.createElement('iframe');
       f.setAttribute('src', src);
-      f.setAttribute('title', 'Changemaker Chronicles teaser');
-      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('title', p.getAttribute('aria-label') || 'Video');
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen');
       f.setAttribute('allowfullscreen', '');
       p.innerHTML = '';
       p.appendChild(f);
