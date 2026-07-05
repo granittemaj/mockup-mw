@@ -64,6 +64,17 @@
     });
   });
 
+  // Back to top
+  var totop = document.getElementById('totop');
+  if (totop) {
+    var onTop = function () { totop.classList.toggle('show', window.scrollY > 500); };
+    window.addEventListener('scroll', onTop, { passive: true });
+    onTop();
+    totop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Changemaker Chronicles: click-to-play film poster (loads the embed on demand)
   document.querySelectorAll('.chron-player').forEach(function (p) {
     var play = function () {
