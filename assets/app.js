@@ -109,4 +109,22 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
     });
   });
+
+  // Cookie notice. In WordPress the MW Core plugin drives consent + analytics
+  // (it defines window.MWConsent), so this mockup-only handler stands down there.
+  if (!window.MWConsent) {
+    var cb = document.getElementById('mw-cookie');
+    if (cb) {
+      if (!localStorage.getItem('mw_consent')) {
+        setTimeout(function () { cb.hidden = false; requestAnimationFrame(function () { cb.classList.add('show'); }); }, 500);
+      }
+      cb.querySelectorAll('[data-cc]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          localStorage.setItem('mw_consent', b.getAttribute('data-cc'));
+          cb.classList.remove('show');
+          setTimeout(function () { cb.hidden = true; }, 450);
+        });
+      });
+    }
+  }
 })();
