@@ -1,4 +1,4 @@
-/* Mark Wexler — shared behaviour */
+/* Mark Wexler, shared behaviour */
 (function () {
   // Sticky header background on scroll
   var hdr = document.getElementById('hdr');
@@ -42,7 +42,7 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
 
-  // Contact form — inline confirmation instead of redirect (mockup)
+  // Contact form, inline confirmation instead of redirect (mockup)
   var form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', function (ev) {
@@ -56,11 +56,11 @@
     });
   }
 
-  // Email capture (Changemaker Chronicles) — mockup confirmation
+  // Email capture (Changemaker Chronicles), mockup confirmation
   document.querySelectorAll('.capture').forEach(function (cap) {
     cap.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      cap.innerHTML = '<p style="font-family:var(--serif);font-style:italic;color:rgba(244,241,232,.86);font-size:1.05rem">Thank you — we’ll let you know when it launches.</p>';
+      cap.innerHTML = '<p style="font-family:var(--serif);font-style:italic;color:rgba(244,241,232,.86);font-size:1.05rem">Thank you, we’ll let you know when it launches.</p>';
     });
   });
 })();
