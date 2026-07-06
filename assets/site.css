@@ -452,9 +452,9 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 40px}
 .foot-col h4{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ox);margin-bottom:16px}
 .foot-col a{display:block;font-family:var(--disp);font-weight:500;color:rgba(244,241,232,.66);text-decoration:none;font-size:.94rem;margin-bottom:10px;transition:color .3s}
 .foot-col a:hover{color:var(--paper)}
-.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:30px}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:26px;padding-top:24px;border-top:1px solid var(--line-d)}
 .foot-bot p{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(244,241,232,.4)}
-.foot-legal{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px;padding-top:24px;border-top:1px solid var(--line-d)}
+.foot-legal{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-top:26px}
 .foot-legal-nav{display:flex;gap:22px;flex-wrap:wrap}
 .foot-legal-nav a{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,232,.55);text-decoration:none;transition:color .25s}
 .foot-legal-nav a:hover{color:var(--ox)}
@@ -510,6 +510,31 @@ body.nav-lock .mw-cookie{opacity:0;visibility:hidden;pointer-events:none}
 /* ---------- FOCUS (accessibility, on-brand) ---------- */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.entry:focus-visible,.chron-player:focus-visible,[tabindex]:focus-visible{
   outline:2px solid var(--ox);outline-offset:3px}
+
+/* ============================================================
+   ABOUT — "The Profile" redesign
+   ============================================================ */
+/* Hero: portrait cover at sub-page scale (mirrors the homepage cover, one
+   display headline only — same type sizes as the rest of the site). */
+/* Hero: full-bleed cinematic portrait with the text overlaid — a film-poster
+   treatment, deliberately different from the homepage's split cover. */
+.ab-hero{position:relative;min-height:94vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--ink);border-bottom:1px solid var(--ink)}
+.ab-hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 16%;filter:grayscale(1) contrast(1.05) brightness(.6);z-index:0;clip-path:inset(0 0 100% 0);animation:reveal 1.3s .25s cubic-bezier(.7,0,.2,1) forwards}
+.ab-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(86% 62% at 80% 6%,rgba(140,42,49,.42),transparent 54%),linear-gradient(180deg,rgba(22,19,15,.44) 0%,transparent 24%,rgba(22,19,15,.9) 100%)}
+.ab-hero .cl{position:relative;z-index:2;width:100%;padding:0 46px 78px;color:var(--paper)}
+.ab-hero .kick{color:var(--ox);margin-bottom:26px}
+.ab-hero h1{font-family:var(--disp);font-weight:900;font-size:clamp(2.8rem,6.4vw,5.6rem);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;max-width:16ch;color:var(--paper)}
+.ab-hero h1 .dot{color:var(--ox)}
+.ab-hero .lead{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.4;color:rgba(244,241,232,.84);max-width:46ch;margin-top:24px}
+.ab-hero .creds{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:30px}
+.ab-hero .creds span{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,232,.62);display:flex;align-items:center;gap:20px}
+.ab-hero .creds span:not(:first-child)::before{content:"\25C6";color:var(--ox);font-size:.5rem}
+.ab-scroll{position:absolute;right:44px;bottom:34px;z-index:2;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,232,.55);writing-mode:vertical-rl}
+@media(max-width:640px){.ab-hero .cl{padding:0 22px 56px}.ab-scroll{display:none}}
+
+/* Tighter, even section rhythm + a left-aligned closing statement. */
+.ab-sec{padding:80px 0}
+.ab-pull{text-align:left;max-width:20ch;margin:50px 0 0}
 
 /* ============================================================
    SIGNATURE HOVER SYSTEM  (all interactive cards + rows, every page)

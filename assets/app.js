@@ -55,7 +55,7 @@
         requestAnimationFrame(step);
       });
     }, { threshold: 0.6 });
-    document.querySelectorAll('.stat .n[data-to]').forEach(function (el) { cio.observe(el); });
+    document.querySelectorAll('[data-to]').forEach(function (el) { cio.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
   }
