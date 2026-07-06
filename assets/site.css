@@ -200,8 +200,7 @@ header.nav-open .navtoggle i::after{top:0;transform:rotate(-45deg)}
 .talk h3{font-family:var(--disp);font-weight:700;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;line-height:1.05;transition:color .3s}
 .talk:hover h3{color:var(--ox)}
 .talk .dk{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--grey);margin-top:5px}
-.talk .go{font-family:var(--mono);font-size:1.1rem;color:var(--ox);transition:transform .3s}
-.talk:hover .go{transform:translateX(6px)}
+.talk .go{font-family:var(--mono);font-size:1.1rem;color:var(--ox)}
 @media(max-width:680px){.talk{grid-template-columns:40px 1fr auto;gap:14px}.talk .dk{display:none}}
 
 /* ---------- PROOF POINTS (dark) ---------- */
@@ -364,8 +363,7 @@ header.nav-open .navtoggle i::after{top:0;transform:rotate(-45deg)}
 .press-item .outlet .yr{display:block;font-family:var(--mono);font-weight:400;font-size:.68rem;letter-spacing:.1em;color:var(--grey);margin-top:6px}
 .press-item h3{font-family:var(--serif);font-size:1.24rem;line-height:1.35;color:var(--ink-2);font-weight:400}
 .press-item:hover .outlet{color:var(--ox)}
-.press-item .go{font-family:var(--mono);font-size:1.1rem;color:var(--ox);transition:transform .3s;align-self:center}
-.press-item:hover .go{transform:translateX(6px)}
+.press-item .go{font-family:var(--mono);font-size:1.1rem;color:var(--ox);align-self:center}
 @media(max-width:780px){.press-item{grid-template-columns:1fr;gap:8px}.press-item .go{display:none}}
 
 .awards{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--ink);margin-top:10px}
@@ -565,34 +563,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){.mc-circle .ring.spin{animation:none}}
 
 /* ============================================================
-   SIGNATURE HOVER SYSTEM  (all interactive cards + rows, every page)
-   One editorial language: an oxblood rule wipes in left-to-right, a
-   soft paper tint fades, and the heading leans right into oxblood.
-   Motion is horizontal and calm — nothing "lifts" or jumps upward.
+   HOVER (all interactive cards + rows, every page): COLOUR ONLY.
+   The heading turns oxblood and a soft tint fades in. Nothing moves.
    ============================================================ */
-.entry,.talk,.press-item,.story,.ccard,.award,.step,.service,.origin-card,.vcard{
-  position:relative;transition:background .45s cubic-bezier(.2,.8,.2,1)}
-
-/* the oxblood underline that draws in from the left */
-.entry::after,.talk::after,.press-item::after,.story::after,.ccard::after,.award::after,.step::after,.service::after,.origin-card::after{
-  content:"";position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:var(--ox);
-  transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.entry:hover::after,.talk:hover::after,.press-item:hover::after,.story:hover::after,.ccard:hover::after,.award:hover::after,.step:hover::after,.service:hover::after,.origin-card:hover::after{transform:scaleX(1)}
-
-/* soft tint on hover */
+.entry,.talk,.press-item,.ccard,.award,.step,.service,.origin-card{transition:background .35s ease}
 .entry:hover,.talk:hover,.press-item:hover,.ccard:hover,.award:hover,.step:hover,.service:hover,.origin-card:hover{background:var(--paper-2)}
 .story:hover{background:rgba(244,241,232,.05)}
-
-/* heading leans right + turns oxblood */
-.entry .term,.talk h3,.press-item h3,.story h3,.ccard h3,.award h3,.step h3,.service h3,.origin-card h3,.vcard h3{
-  transition:color .35s cubic-bezier(.2,.8,.2,1),transform .45s cubic-bezier(.2,.8,.2,1)}
-.entry:hover .term,.talk:hover h3,.press-item:hover h3,.story:hover h3,.ccard:hover h3,.award:hover h3,.step:hover h3,.service:hover h3,.origin-card:hover h3,.vcard:hover h3{
-  color:var(--ox);transform:translateX(7px)}
-
-/* the index/marker nudges along with it */
-.entry .num,.talk .num,.press-item .outlet,.step .n,.award .yr,.service .num{
-  transition:transform .45s cubic-bezier(.2,.8,.2,1),color .3s}
-.entry:hover .num,.talk:hover .num,.press-item:hover .outlet,.step:hover .n,.award:hover .yr,.service:hover .num{transform:translateX(4px)}
+.entry .term,.talk h3,.press-item h3,.story h3,.ccard h3,.award h3,.step h3,.service h3,.origin-card h3,.vcard h3{transition:color .3s ease}
+.entry:hover .term,.talk:hover h3,.press-item:hover h3,.story:hover h3,.ccard:hover h3,.award:hover h3,.step:hover h3,.service:hover h3,.origin-card:hover h3,.vcard:hover h3{color:var(--ox)}
 
 /* ---------- REVEAL / MOTION ---------- */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
@@ -607,8 +585,4 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .cover-photo img{clip-path:none}
   .cover-title .ln>span{transform:none}
   .cover-dek,.cover-foot{opacity:1}
-  /* keep hover feedback, drop the movement */
-  .entry:hover .term,.talk:hover h3,.press-item:hover h3,.story:hover h3,.ccard:hover h3,.award:hover h3,.step:hover h3,.service:hover h3,.origin-card:hover h3,.vcard:hover h3,
-  .entry:hover .num,.talk:hover .num,.press-item:hover .outlet,.step:hover .n,.award:hover .yr,.service:hover .num{transform:none}
-  .entry::after,.talk::after,.press-item::after,.story::after,.ccard::after,.award::after,.step::after,.service::after,.origin-card::after{transition:none}
 }
