@@ -14,11 +14,14 @@
     navToggle.addEventListener('click', function () {
       var open = hdr.classList.toggle('nav-open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      // Lock background scroll while the menu is open.
+      document.body.classList.toggle('nav-lock', open);
     });
     hdr.querySelectorAll('.nav-links a').forEach(function (a) {
       a.addEventListener('click', function () {
         hdr.classList.remove('nav-open');
         navToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('nav-lock');
       });
     });
   }
