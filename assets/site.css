@@ -477,8 +477,10 @@ footer{background:var(--ink);color:var(--paper);padding:70px 0 40px}
 .legal a{color:var(--ox);text-decoration:underline;text-underline-offset:2px}
 
 /* ---------- COOKIE NOTICE BANNER ---------- */
-.mw-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;transform:translateY(115%);transition:transform .55s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.mw-cookie{position:fixed;left:0;right:0;bottom:0;z-index:9999;transform:translateY(115%);transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .3s;pointer-events:none}
 .mw-cookie.show{transform:none;pointer-events:auto}
+/* Tuck the banner away while the mobile menu is open. */
+body.nav-lock .mw-cookie{opacity:0;visibility:hidden;pointer-events:none}
 .mw-cookie-in{max-width:1180px;margin:0 auto;background:var(--ink);color:var(--paper);border-top:2px solid var(--ox);padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;box-shadow:0 -18px 50px rgba(0,0,0,.3)}
 .mw-cookie-txt{font-family:var(--serif);font-size:.94rem;line-height:1.5;color:rgba(244,241,232,.82);max-width:72ch;margin:0}
 .mw-cookie-txt a{color:var(--paper);text-decoration:underline;text-underline-offset:2px}
