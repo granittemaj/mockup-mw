@@ -397,17 +397,17 @@ header.nav-open .navtoggle i::after{top:0;transform:rotate(-45deg)}
 
 /* ---------- CONSULTING · Montara Circle redesign ---------- */
 .montara-def{padding-top:88px}
-.def-grid{display:grid;grid-template-columns:.34fr 1fr;gap:56px;align-items:start}
-.def-side{position:sticky;top:100px}
-.def-pron{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--grey);margin-top:18px}
-.def-statement{font-family:var(--disp);font-weight:500;font-size:clamp(1.5rem,3vw,2.35rem);line-height:1.24;letter-spacing:-.02em;color:var(--ink);max-width:26ch}
+.def-grid{display:block}
+.def-side{display:flex;align-items:baseline;gap:22px;flex-wrap:wrap;margin-bottom:26px}
+.def-side .kick{margin:0}
+.def-pron{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--grey)}
+.def-statement{font-family:var(--disp);font-weight:500;font-size:clamp(1.25rem,1.9vw,1.6rem);line-height:1.38;letter-spacing:-.01em;color:var(--ink);max-width:none}
 .def-statement .ox{color:var(--ox)}
-@media(max-width:820px){.def-grid{grid-template-columns:1fr;gap:22px}.def-side{position:static}}
 /* framing film poster (reuses .chron-player) */
 .montara-film .pfoot .pt{font-size:clamp(1.4rem,3.2vw,2.6rem)}
 /* origin proof */
-.origin-head{max-width:60ch}
-.origin-title{font-family:var(--disp);font-weight:900;font-size:clamp(1.9rem,4.6vw,3.4rem);line-height:.98;letter-spacing:-.035em;text-transform:uppercase;margin-top:26px}
+.origin-head{max-width:none}
+.origin-title{font-family:var(--disp);font-weight:900;font-size:clamp(1.6rem,2.6vw,2.1rem);line-height:1.08;letter-spacing:-.03em;text-transform:uppercase;margin-top:22px;max-width:none}
 .origin-cards{display:grid;grid-template-columns:1fr 1fr;margin-top:56px;border-top:1px solid var(--ink)}
 .origin-card{padding:44px 46px 46px 0;border-bottom:1px solid var(--line);position:relative}
 .origin-card:nth-child(2){border-left:1px solid var(--line);padding-left:46px}
@@ -535,6 +535,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 /* Tighter, even section rhythm + a left-aligned closing statement. */
 .ab-sec{padding:80px 0}
 .ab-pull{text-align:left;max-width:20ch;margin:50px 0 0}
+
+/* ============================================================
+   CONSULTING — "The Montara Circle" hero: an animated convening ring.
+   Five disciplines (dots) orbit one hard problem at the centre.
+   ============================================================ */
+.mc-hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink)}
+.mc-hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(60% 60% at 74% 44%,rgba(140,42,49,.34),transparent 60%)}
+.mc-hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;width:100%}
+.mc-copy .kick{color:var(--ox);margin-bottom:28px}
+.mc-copy h1{font-family:var(--disp);font-weight:900;font-size:clamp(2.6rem,5.4vw,4.6rem);line-height:.9;letter-spacing:-.045em;text-transform:uppercase;color:var(--paper)}
+.mc-copy h1 .dot{color:var(--ox)}
+.mc-copy .lead{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,1.9vw,1.5rem);line-height:1.4;color:rgba(244,241,232,.82);max-width:34ch;margin-top:24px}
+.mc-disc{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:34px}
+.mc-disc span{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,241,232,.6);display:flex;align-items:center;gap:18px}
+.mc-disc span:not(:first-child)::before{content:"\25C6";color:var(--ox);font-size:.46rem}
+.mc-viz{display:flex;justify-content:center}
+.mc-circle{position:relative;--R:clamp(130px,19vw,225px);width:calc(var(--R) * 2);height:calc(var(--R) * 2)}
+.mc-circle .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(244,241,232,.14)}
+.mc-circle .ring.mid{inset:15%;border-color:rgba(244,241,232,.09)}
+.mc-circle .ring.spin{border:1px dashed rgba(140,42,49,.55);animation:spin 46s linear infinite}
+.mc-circle .core{position:absolute;inset:29%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:7px;background:radial-gradient(circle at 50% 42%,rgba(140,42,49,.42),rgba(140,42,49,.05) 72%)}
+.mc-circle .core b{font-family:var(--disp);font-weight:800;font-size:clamp(1rem,1.7vw,1.35rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase;color:var(--paper)}
+.mc-circle .core span{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ox)}
+.mc-dot{position:absolute;top:50%;left:50%;width:13px;height:13px;margin:-6.5px;border-radius:50%;background:var(--ox);
+  transform:rotate(var(--a)) translateY(calc(var(--R) * -1)) rotate(calc(var(--a) * -1));box-shadow:0 0 0 5px rgba(140,42,49,.15)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:860px){.mc-hero{min-height:0;padding:120px 0 70px}.mc-hero-in{grid-template-columns:1fr;gap:52px}.mc-viz{order:-1}}
+@media(prefers-reduced-motion:reduce){.mc-circle .ring.spin{animation:none}}
 
 /* ============================================================
    SIGNATURE HOVER SYSTEM  (all interactive cards + rows, every page)
